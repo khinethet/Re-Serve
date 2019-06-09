@@ -21,11 +21,11 @@ public class ReServeBackApplication {
 	ApplicationRunner init(UserRepository userRepository, GiveawayRepository giveawayRepository) {
 		return args -> {
 			Stream.of("Matt", "Khine", "Andrew", "Vincent", "Jeremy").forEach(name -> {
-				User user = new User(name + "@gmail.com", name, "pass", Long.valueOf(0));
+				User user = new User(name + "@gmail.com", name, "pass", Long.valueOf(1));
 				userRepository.save(user);
 			});
-			User creator1 = new User("Kevin@gmail.com", "Kevin", "pass", Long.valueOf(0));
-			User winner1 = new User("Brandon@gmail.com", "Brandon", "pass", Long.valueOf(0));
+			User creator1 = new User("Kevin@gmail.com", "Kevin", "pass", Long.valueOf(1));
+			User winner1 = new User("Brandon@gmail.com", "Brandon", "pass", Long.valueOf(1));
 			creator1 = userRepository.save(creator1);
 			winner1 = userRepository.save(winner1);
 			HashSet<User> participants = new HashSet<>();
@@ -37,8 +37,8 @@ public class ReServeBackApplication {
 			giveaway1.getParticipants().add(winner1);
 			giveawayRepository.save(giveaway1);
 
-			User creator2 = new User("Ana@gmail.com", "Ana", "pass", Long.valueOf(0));
-			User winner2 = new User("Vivian@gmail.com", "Vivian", "pass", Long.valueOf(0));
+			User creator2 = new User("Ana@gmail.com", "Ana", "pass", Long.valueOf(1));
+			User winner2 = new User("Vivian@gmail.com", "Vivian", "pass", Long.valueOf(1));
 			creator2 = userRepository.save(creator2);
 			winner2 = userRepository.save(winner2);
 			Giveaway giveaway2 = new Giveaway(creator2, "Title", "Description", "Location", Long.valueOf(5), "END_DATE", winner2);

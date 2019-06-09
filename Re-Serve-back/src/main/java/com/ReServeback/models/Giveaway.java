@@ -15,7 +15,7 @@ public class Giveaway {
     @Column(name="ID")
     private Long id;
 
-    @OneToOne(targetEntity = User.class)
+    @ManyToOne
     @JoinColumn(name="EMAIL", insertable = false, updatable = false)
     private User creator;
 
@@ -37,8 +37,7 @@ public class Giveaway {
     @Column(name="END_DATE")
     private String end_date;
 
-    @OneToOne(targetEntity = User.class)
-    @JoinColumn(name="EMAIL", insertable = false, updatable = false)
+    @ManyToOne
     private User winner;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
