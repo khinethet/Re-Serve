@@ -18,15 +18,15 @@ public class GiveawayController {
     @RequestMapping("/hello")
     public String index() { return "Greetings!";}
 
-    @RequestMapping("/{creator}/under_creator")
-    public List<Giveaway> byAuthor(@PathVariable(value = "creator") String creator) {
-        return giveawayService.byAuthor(creator);
-    }
-
-    @RequestMapping("/{creator}/all_giveaways")
-    public List<Giveaway> allGiveaways(@PathVariable(value = "creator") String creator) {
-        return giveawayService.allGiveaways(creator);
-    }
+//    @RequestMapping("/{creator}/under_creator")
+//    public List<Giveaway> byAuthor(@PathVariable(value = "creator") String creator) {
+//        return giveawayService.byAuthor(creator);
+//    }
+//
+//    @RequestMapping("/{creator}/all_giveaways")
+//    public List<Giveaway> allGiveaways(@PathVariable(value = "creator") String creator) {
+//        return giveawayService.allGiveaways(creator);
+//    }
 
     @RequestMapping("/{location}")
     public List<Giveaway> byLocation(@PathVariable(value = "location") String location) {

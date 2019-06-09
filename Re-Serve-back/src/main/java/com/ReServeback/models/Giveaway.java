@@ -1,25 +1,39 @@
 package com.ReServeback.models;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Giveaway {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany
+
+    @OneToOne
     @JoinColumn(name="email")
     private User creator;
+
     private String username;
     private String title;
     private String description;
     private String location;
     private int entry_limit;
     private String end_date;
+
+    @OneToOne
+    @JoinColumn(name="email", insertable=false, updatable=false)
+    private User winner;
+
     @OneToMany
     @JoinColumn(name="email")
-    private User winner;
+    private List<User> joined_users;
+
+    @OneToMany
+    @JoinColumn(name="id")
+    private List<Picture> pictures;
 
     protected Giveaway() {}
 

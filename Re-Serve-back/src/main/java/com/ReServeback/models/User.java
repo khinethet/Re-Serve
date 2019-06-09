@@ -1,7 +1,7 @@
 package com.ReServeback.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,6 +11,10 @@ public class User {
     private String username;
     private String password;
     private int karma;
+
+    @OneToMany
+    @JoinColumn(name="id")
+    private List<Giveaway> joined_giveaways;
 
     protected User() {}
 

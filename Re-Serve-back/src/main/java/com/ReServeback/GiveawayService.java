@@ -18,13 +18,13 @@ public class GiveawayService {
         return giveawayRepository.findAll();
     }
 
-    public List<Giveaway> byAuthor(String email) {
-        return giveawayRepository.findByEmail(email);
-    }
+//    public List<Giveaway> byAuthor(String email) {
+//        return giveawayRepository.findByEmail(email);
+//    }
 
-    public List<Giveaway> allGiveaways(String email) {
-        return giveawayRepository.findByEmailNot(email);
-    }
+//    public List<Giveaway> allGiveaways(String email) {
+//        return giveawayRepository.findByEmailNot(email);
+//    }
 
     public List<Giveaway> giveawaysInMyLocation(String location) {
         return giveawayRepository.findByLocation(location);

@@ -1,15 +1,12 @@
 package com.ReServeback.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Picture {
     @Id
     private String path;
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "id")
     private Giveaway giveaway;
 
