@@ -47,6 +47,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.json.JSONObject</groupId>
+			<artifactId>json</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
