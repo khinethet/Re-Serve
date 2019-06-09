@@ -37,8 +37,13 @@ public class UserController {
 
     @RequestMapping("/{email}")
     public User getUser(@PathVariable(value = "email") String email) {
-        User user = userRepository.findById(email).get();
-        return user; //add error handling here?
+        if(userRepository.findById(email).isPresent()) {
+            User user = userRepository.findById(email).get();
+            return user;
+        }
+        else {
+            return null;
+        }
     }
 
 }
