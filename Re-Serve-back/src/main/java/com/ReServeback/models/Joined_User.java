@@ -15,13 +15,15 @@ public class Joined_User {
     @ManyToMany
     @JoinColumn(name = "email")
     private User user;
-    private int id;
+    @ManyToMany
+    @JoinColumn(name = "id")
+    private Giveaway giveaway;
 
     protected Joined_User() {}
 
-    public Joined_User(User user, int id,int ju_id) {
+    public Joined_User(User user, Giveaway giveaway, int ju_id) {
         this.user = user;
-        this.id = id;
+        this.giveaway = giveaway;
         this.ju_id = ju_id;
     }
 
@@ -29,8 +31,8 @@ public class Joined_User {
     public String toString() {
         return
                 "{" +
-                    "\"email\": \"" + user + "\"," +
-                    "\"id\": \"" + id + "\"," +
+                    "\"email\": \"" + user.getEmail() + "\"," +
+                    "\"id\": \"" + giveaway.getId() + "\"," +
                 "}";
     }
 }

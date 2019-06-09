@@ -2,18 +2,22 @@ package com.ReServeback.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Picture {
     @Id
     private String path;
-    private int id;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private Giveaway giveaway;
 
     protected Picture() {}
 
-    public Picture(String path, int id) {
+    public Picture(String path, Giveaway giveaway) {
         this.path = path;
-        this.id = id;
+        this.giveaway = giveaway;
     }
 
     @Override
@@ -21,7 +25,7 @@ public class Picture {
         return
                 "{" +
                         "\"path\": \"" + path + "\"," +
-                        "\"id\": \"" + id + "\"," +
+                        "\"id\": \"" + giveaway.getId() + "\"," +
                 "}";
     }
 }
