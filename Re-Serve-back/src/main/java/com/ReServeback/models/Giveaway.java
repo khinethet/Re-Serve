@@ -143,6 +143,10 @@ public class Giveaway {
         this.participants = participants;
     }
 
+    public void addParticipants(User participant) { this.participants.add(participant); }
+
+    public void removeParticipants(User participant) { this.participants.remove(participant); }
+
     //    public Set<User> getJoined_users() {
 //        return joined_users;
 //    }

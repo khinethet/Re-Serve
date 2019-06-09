@@ -74,6 +74,32 @@ public class GiveawayController {
         }
     }
 
+    @RequestMapping("/{id}/Participants")
+    public Set<User> getParticipants(@PathVariable(value = "id") long id) {
+        Giveaway giveaway = giveawayRepository.findById(id).get();
+        return giveaway.getParticipants();
+    }
+
+    @RequestMapping("/{id}/join/{email}")
+    public void joinGiveaway(@PathVariable(value = "id") long id,
+                                   @PathVariable(value = "email") String email) {
+        Giveaway giveaway = giveawayRepository.findById(id).get();
+        User participant = userRepository.findById(email).get();
+        giveaway.addParticipants(participant);
+        giveawayRepository.save(giveaway);
+    }
+
+    @RequestMapping("/{id}/leave/{email}")
+    public void leaveGiveaway(@PathVariable(value = "id") long id,
+                             @PathVariable(value = "email") String email) {
+        Giveaway giveaway = giveawayRepository.findById(id).get();
+        User participant = userRepository.findById(email).get();
+        giveaway.removeParticipants(participant);
+        giveawayRepository.save(giveaway);
+    }
+
+
+
 
     //user joining (email) and giveaway id and this inserts to joined_user table
     //opt out is delete entry joined_users
