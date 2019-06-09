@@ -23,10 +23,11 @@ public class GiveawayController {
     private GiveawayRepository giveawayRepository;
 
     @RequestMapping("/giveaways")
-    public List<Giveaway> getAllGiveawayss() {
-        ArrayList<Giveaway> list = new ArrayList<>();
-        list = (ArrayList) giveawayRepository.findAll();
-        return list;
+    public List<Giveaway> getAllGiveaways() {
+        Iterable<Giveaway> giveawayRepoIterator = giveawayRepository.findAll();
+        List<Giveaway> giveaways = new ArrayList<>();
+        giveawayRepoIterator.forEach(giveaways::add);
+        return giveaways;
     }
 
 //    @RequestMapping("/hello")
@@ -74,7 +75,7 @@ public class GiveawayController {
         }
     }
 
-    @RequestMapping("/{id}/Participants")
+    @RequestMapping("/{id}/participants")
     public Set<User> getParticipants(@PathVariable(value = "id") long id) {
         Giveaway giveaway = giveawayRepository.findById(id).get();
         return giveaway.getParticipants();
@@ -96,6 +97,12 @@ public class GiveawayController {
         User participant = userRepository.findById(email).get();
         giveaway.removeParticipants(participant);
         giveawayRepository.save(giveaway);
+    }
+
+    @RequestMapping("/{id}/participants/number_of_people")
+    public int numParticipants(@PathVariable(value = "id") long id) {
+        Giveaway giveaway = giveawayRepository.findById(id).get();
+        return giveaway.numParticipants();
     }
 
 

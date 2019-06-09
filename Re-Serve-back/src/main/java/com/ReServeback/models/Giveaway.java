@@ -147,6 +147,8 @@ public class Giveaway {
 
     public void removeParticipants(User participant) { this.participants.remove(participant); }
 
+    public int numParticipants() { return this.participants.size(); }
+
     //    public Set<User> getJoined_users() {
 //        return joined_users;
 //    }

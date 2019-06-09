@@ -17,8 +17,28 @@ public class UserController {
 
     @RequestMapping("/user")
     public List<User> getAllUsers() {
-        ArrayList<User> list = new ArrayList<>();
-        list = (ArrayList) userRepository.findAll();
-        return list;
+
+        Iterable<User> userRepoIterator = userRepository.findAll();
+        List<User> users = new ArrayList<>();
+        userRepoIterator.forEach(users::add);
+        return users;
+    } //define in User
+
+    @RequestMapping("/login/{email}")
+    public User login(@PathVariable(value = "email") String email) {
+        if(userRepository.findById(email).isPresent()) {
+            User user = userRepository.findById(email).get();
+            return user;
+        }
+        else {
+            return null;
+        }
     }
+
+    @RequestMapping("/{email}")
+    public User getUser(@PathVariable(value = "email") String email) {
+        User user = userRepository.findById(email).get();
+        return user; //add error handling here?
+    }
+
 }
