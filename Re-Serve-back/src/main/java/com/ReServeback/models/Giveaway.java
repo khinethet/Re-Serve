@@ -36,6 +36,10 @@ public class Giveaway {
         this.winner = winner;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return
