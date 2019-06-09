@@ -1,9 +1,11 @@
 package com.ReServeback;
 
 import com.ReServeback.models.Giveaway;
+import com.ReServeback.models.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class GiveawayController {
 
     private GiveawayService giveawayService;
+    private UserService userService;
 
     @RequestMapping("/hello")
     public String index() { return "Greetings!";}
@@ -30,5 +33,14 @@ public class GiveawayController {
         return giveawayService.giveawaysInMyLocation(location);
     }
 
+    @RequestMapping("/{current_user}")
+    public List<User> profile(@PathVariable(value = "current_user") String current_user) {
+        return userService.byAuthor(current_user);
+    }
+
+
+
+    //user joining (email) and giveaway id and this inserts to joined_user table
+    //opt out is delete entry joined_users
 }
 
