@@ -16,6 +16,6 @@ public interface GiveawayRepository extends CrudRepository<Giveaway, Long> {
 //
 //    List<Giveaway> findByUser(User user);
 
-    List<Giveaway> findByLocation(String location);
+//    List<Giveaway> findByLocation(String location);
 
 }
