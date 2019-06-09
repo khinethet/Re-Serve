@@ -25,6 +25,10 @@ public class User {
         this.karma = karma;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return
